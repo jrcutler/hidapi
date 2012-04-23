@@ -661,10 +661,6 @@ static void read_callback(struct libusb_transfer *transfer)
 		}
 		pthread_mutex_unlock(&dev->mutex);
 	}
-	else if (transfer->status == LIBUSB_TRANSFER_ERROR) {
-		dev->shutdown_thread = 1;
-		return;
-	}
 	else if (transfer->status == LIBUSB_TRANSFER_CANCELLED) {
 		dev->shutdown_thread = 1;
 		return;
